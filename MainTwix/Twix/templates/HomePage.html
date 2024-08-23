@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<h1 class='text-center mt-4'>Welcome To Twixter, HomePage</h1>
+
+<a class='btn btn-primary ms-4' href="{% url 'twix_create' %}">Create a tweet</a>
+<div class="container row m-auto">
+  {% for twix in twixs1 %}
+  <div class="card m-3 p-3" style="width: 23rem;">
+    <img src="{{ twix.image.url }}" class="card-img-top" alt="...">
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">{{ twix.user.username }}</h5>
+      <p class="card-text">{{ twix.twit }}</p>
+      <div class="mt-auto">
+        {%if twix.user == user%}
+        <a class='btn btn-info' href="{% url 'twix_edit' twix.id %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'twix_delete' twix.id %}" class="btn btn-danger">Delete</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>LOGIN</h2>
+<form method='post'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class = 'btn btn-primary'>login</button>
+</form>
+<p>Dont have an account? <a href="{%url 'twix_register'%}">Register Here</a></p>
+{% endblock %}

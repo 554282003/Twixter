@@ -1,3 +1,6 @@
+from django.urls import path
+from . import views
+
 """
 URL configuration for MainTwix project.
 
@@ -15,8 +18,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.urls import path
-from . import views
 urlpatterns = [
-    path('', views.demo , name='demo'),
-] 
+    path('', views.HomePage, name='HomePage'),
+    path('twix_create/', views.twix_create, name='twix_create'),
+    path('<int:tweet_id>/edit/', views.tweet_edit, name='twix_edit'),
+    path('<int:tweet_id>/delete/', views.tweet_delete, name='twix_delete'),
+    
+    
+    
+    path('register/', views.register, name='twix_register'),]

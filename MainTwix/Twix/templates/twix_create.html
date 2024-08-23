@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<h1 class='text-center mt-4 h2'>Welcome To TWIXTER, MAKE YOUR NEXT TWIX.</h1>
+<div class="createform m-5">
+    <h1>{%if form.instance.pk%} Edit Tweet 
+        {% else %} Create tweet 
+        {% endif %}</h1>
+    <h1>{{form.instance.user}}</h1>
+    <form method='POST' enctype = 'multipart/form-data' class='form'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class = 'btn btn-warning' type='submit'>Submit</button>
+    </form>
+    <a href="{%url 'HomePage' %}">Back to twix List</a>
+</div>
+{% endblock %}
